@@ -21,6 +21,9 @@
     "test": "vitest",
     "test:update": "vitest -u",
     "lint": "eslint src --fix --ext=.ts,.js,.cjs,.mjs --cache --ignore-path=.gitignore",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
     "commit": "cz",
     "up": "taze -wI",
     "prepare": "husky install"
