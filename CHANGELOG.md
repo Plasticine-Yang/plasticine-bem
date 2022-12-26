@@ -1,5 +1,13 @@
 # plasticine-bem
 
+## 0.3.0
+
+### Minor Changes
+
+- support using bem in scss
+- support custom mixins config
+- use gulp for building workflow
+
 ## 0.2.2
 
 ### Patch Changes
