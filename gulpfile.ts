@@ -8,7 +8,7 @@ const execUnbuild = () => {
 }
 
 const copySassSourceCode = () => {
-  src(`${SASS_SOURCE_PATH}/**/*`).pipe(dest(`${DIST_PATH}/sass`))
+  src(`${SASS_SOURCE_PATH}/**/*`).pipe(dest(`${DIST_PATH}/sass/plasticine-bem`))
   return Promise.resolve()
 }
 

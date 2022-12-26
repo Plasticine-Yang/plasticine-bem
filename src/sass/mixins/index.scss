@@ -2,11 +2,22 @@
 
 // BEM
 @mixin b($block) {
-  $B: $namespace + $common-separator + $block !global;
-  $selector: '.' + $B;
+  $B: $block !global;
 
-  #{$selector} {
-    @content;
+  @if $namespace != '' {
+    $B: $namespace + $common-separator + $B;
+
+    $selector: '.' + $B;
+
+    #{$selector} {
+      @content;
+    }
+  } @else {
+    $selector: '.' + $B;
+
+    #{$selector} {
+      @content;
+    }
   }
 }
 
