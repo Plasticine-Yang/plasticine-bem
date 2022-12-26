@@ -1,13 +1,13 @@
-import { createNameSpace } from '..'
+import { createNameSpace, setGlobalNameSpace } from '..'
 
 describe('bem with namespace', () => {
   const ns = createNameSpace('form', {
-    defaultNameSpace: 'pl',
+    namespace: 'pl',
     statePrefix: 'is-',
   })
 
   const nsWithCSSModule = createNameSpace('form', {
-    defaultNameSpace: 'pl',
+    namespace: 'pl',
     cssModuleClasses: {
       'pl-form': 'style-module__pl-form--1f3gh',
       'pl-form-item': 'style-module__pl-form-item--2fght',
@@ -124,22 +124,30 @@ describe('bem without namespace', () => {
 
   test('b', () => {
     expect(ns.b()).toMatchInlineSnapshot('"form"')
-    expect(nsWithCSSModule.b()).toMatchInlineSnapshot('"style-module__form--1f3gh"')
+    expect(nsWithCSSModule.b()).toMatchInlineSnapshot(
+      '"style-module__form--1f3gh"',
+    )
   })
 
   test('b with blockSuffix', () => {
     expect(ns.b('item')).toMatchInlineSnapshot('"form-item"')
-    expect(nsWithCSSModule.b('item')).toMatchInlineSnapshot('"style-module__form-item--2fght"')
+    expect(nsWithCSSModule.b('item')).toMatchInlineSnapshot(
+      '"style-module__form-item--2fght"',
+    )
   })
 
   test('e', () => {
     expect(ns.e('label')).toMatchInlineSnapshot('"form__label"')
-    expect(nsWithCSSModule.e('label')).toMatchInlineSnapshot('"style-module__form__label--3zxg9"')
+    expect(nsWithCSSModule.e('label')).toMatchInlineSnapshot(
+      '"style-module__form__label--3zxg9"',
+    )
   })
 
   test('m', () => {
     expect(ns.m('primary')).toMatchInlineSnapshot('"form--primary"')
-    expect(nsWithCSSModule.m('primary')).toMatchInlineSnapshot('"style-module__form--primary--4xbg8"')
+    expect(nsWithCSSModule.m('primary')).toMatchInlineSnapshot(
+      '"style-module__form--primary--4xbg8"',
+    )
   })
 
   test('be', () => {
@@ -187,4 +195,11 @@ describe('bem without namespace', () => {
   })
 
   test('')
+})
+
+test('setGlobalNameSpace', () => {
+  setGlobalNameSpace('pl')
+  const ns = createNameSpace('form')
+
+  expect(ns.b()).toMatchInlineSnapshot('"pl-form"')
 })

@@ -1,14 +1,14 @@
 import { CreateNameSpaceOptions, CSSModuleClasses } from './types'
 
-const DEFAULT_NAME_SPACE = ''
 const DEFAULT_STATE_PREFIX = 'is-'
+let globalNameSpace = ''
 
 /**
  * @description 根据 block 生成对应命名空间
  * @param block BEM block
  */
 const createNameSpace = (block: string, options?: CreateNameSpaceOptions) => {
-  const namespace = options?.defaultNameSpace ?? DEFAULT_NAME_SPACE
+  const namespace = options?.namespace ?? globalNameSpace
   const statePrefix = options?.statePrefix ?? DEFAULT_STATE_PREFIX
   const cssModuleClasses = options?.cssModuleClasses
 
@@ -47,10 +47,10 @@ const createNameSpace = (block: string, options?: CreateNameSpaceOptions) => {
   /**
    * @description 根据需要生成状态名
    * @param stateName 状态名
-   * @param active 状态是否激活 -- 不传入时默认激活状态
+   * @param state 状态是否激活 -- 不传入时默认激活状态
    */
-  const is = (stateName: string, active?: boolean) => {
-    const shouldGenerate = active !== undefined ? active : true
+  const is = (stateName: string, state?: boolean) => {
+    const shouldGenerate = state !== undefined ? state : true
     const cls = stateName && shouldGenerate ? `${statePrefix}${stateName}` : ''
     return cssModuleClasses ? cssModuleClasses[cls] : cls
   }
@@ -94,4 +94,11 @@ const _bem = (
   return cssModuleClasses ? cssModuleClasses[cls] : cls
 }
 
-export { createNameSpace }
+/**
+ * @description 配置全局的命名空间 -- 优先级比 createNameSpace options 中的 namespace 低
+ */
+const setGlobalNameSpace = (namespace: string) => {
+  globalNameSpace = namespace
+}
+
+export { createNameSpace, setGlobalNameSpace }

@@ -1,7 +1,7 @@
 export type CSSModuleClasses = { readonly [key: string]: string }
 
 export interface CreateNameSpaceOptions {
-  defaultNameSpace?: string
+  namespace?: string
 
   /**
    * @description 在 is 方法中使用，作为生成的类名的前缀
