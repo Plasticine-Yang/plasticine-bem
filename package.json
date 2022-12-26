@@ -1,7 +1,8 @@
 {
   "name": "plasticine-bem",
   "version": "0.1.0",
-  "description": "",
+  "description": "A library for generating bem specifications.",
+  "homepage": "https://github.com/Plasticine-Yang/plasticine-bem",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
