@@ -8,6 +8,8 @@ A library for generating bem specifications.
 pnpm i plasticine-bem
 ```
 
+### JavaScript API
+
 You can create a bem namespace by calling `createNameSpace` function.
 
 The first param is the block of bem, and the second param is an options object which you can config the namespace.
@@ -75,6 +77,79 @@ It will generate `is-active` by default if you not pass the second state param.
 
 ```ts
 ns.is('active') // ==> is-active
+```
+
+### Sass
+
+You can use bem in sass like this:
+
+```scss
+@use 'plasticine-bem' as *;
+
+@include b(button) {
+  background-color: cyan;
+}
+```
+
+You also can define the namespace.
+
+```scss
+@use 'plasticine-bem/mixins/config' with (
+  $namespae: 'pl'
+);
+```
+
+But you need to config you build tools like webpack and vite first.
+
+#### Webpack
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss/,
+        use: [
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: ['node_modules/plasticine-bem/dist/sass/'],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+}
+```
+
+#### Vite
+
+```js
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        includePaths: ['node_modules/plasticine-bem/dist/sass/plasticine-bem'],
+      },
+    },
+  },
+})
+```
+
+The usage in vite is different from webpack.
+
+```scss
+@use 'mixins/config' with (
+  $namespace: 'pl'
+);
+@use 'mixins' as *;
+
+@include b('button') {
+  background-color: cyan;
+}
 ```
 
 ## Options
