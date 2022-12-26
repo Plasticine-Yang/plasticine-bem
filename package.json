@@ -30,7 +30,8 @@
     "changeset:publish": "changeset publish",
     "commit": "cz",
     "up": "taze -wI",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublish": "pnpm build"
   },
   "config": {
     "commitizen": {
