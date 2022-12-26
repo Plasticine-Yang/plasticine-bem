@@ -1,5 +1,12 @@
 # plasticine-bem
 
+## 0.2.2
+
+### Patch Changes
+
+- change license from ISC to MIT
+- add package.json keywords
+
 ## 0.2.1
 
 ### Patch Changes
