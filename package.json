@@ -1,5 +1,6 @@
 {
-  "version": "1.0.0",
+  "name": "plasticine-bem",
+  "version": "0.0.0",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -17,6 +18,8 @@
     "dev": "tsx --watch",
     "build": "unbuild",
     "stub": "unbuild --stub",
+    "test": "vitest",
+    "test:update": "vitest -u",
     "lint": "eslint src --fix --ext=.ts,.js,.cjs,.mjs --cache --ignore-path=.gitignore",
     "commit": "cz",
     "up": "taze -wI",
@@ -31,6 +34,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@plasticine-yang/eslint-config-typescript": "^0.1.3",
